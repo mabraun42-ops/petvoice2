@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetVoice - Dein Haustier lernt singen!</title>
+    <title>PetVoice - Dein Haustier spricht!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -29,6 +29,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
+    <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-indigo-600 flex items-center">
@@ -43,16 +44,17 @@
         </div>
     </nav>
 
+    <!-- Hero Bereich -->
     <header class="hero-gradient text-white py-16 px-4">
         <div class="max-w-6xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-de">Lass dein Haustier singen!</h1>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-ja">ペットに歌を歌わせよう！</h1>
-            <p class="text-xl mb-10 opacity-90 lang-de">Bestelle jetzt – das Foto sendest du uns einfach nach der Zahlung.</p>
-            <p class="text-xl mb-10 opacity-90 lang-ja">今すぐ注文。お支払いの直後に写真を送ってください。</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-de">Lass dein Haustier sprechen!</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-ja">ペットにおしゃべりさせよう！</h1>
+            <p class="text-xl mb-10 opacity-90 lang-de">Einzigartige Video-Botschaften von deinem Liebling.</p>
+            <p class="text-xl mb-10 opacity-90 lang-ja">あなたの大切なペットが届ける、世界に一つだけのビデオメッセージ。</p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="#order" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform">
-                    <span class="lang-de">Jetzt starten</span>
-                    <span class="lang-ja">今すぐ開始</span>
+                    <span class="lang-de">Jetzt erstellen</span>
+                    <span class="lang-ja">今すぐ作成する</span>
                 </a>
                 <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg flex items-center justify-center shadow-lg hover:bg-green-600 transition">
                     <i class="fab fa-line mr-2 text-2xl"></i> LINE Support
@@ -61,50 +63,92 @@
         </div>
     </header>
 
+    <!-- Beispiel Sektion mit 3 Videos -->
     <section class="py-20 px-4 bg-white">
-        <div class="max-w-sm mx-auto text-center">
-            <div class="video-container">
-                <video controls preload="auto" playsinline muted loop>
-                    <source src="v2_watermarked-39659fb8-1057-44bf-bb2f-47b35d2b30e3.mp4" type="video/mp4">
-                </video>
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4 lang-de">Magische Momente</h2>
+            <h2 class="text-3xl font-bold mb-4 lang-ja">魔法のような瞬間</h2>
+            <p class="text-gray-500 mb-12 lang-de">Ob lustige Sprüche oder liebe Grüße – wir erwecken dein Foto zum Leben.</p>
+            <p class="text-gray-500 mb-12 lang-ja">面白いおしゃべりから心のこもったメッセージまで、あなたの写真を生き生きと動かします。</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Beispiel 1 -->
+                <div>
+                    <div class="video-container mx-auto max-w-[280px]">
+                        <video controls preload="none" playsinline loop>
+                            <source src="v2_watermarked-39659fb8-1057-44bf-bb2f-47b35d2b30e3.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="mt-4 text-gray-500 font-medium lang-de italic">Luna überbringt Glückwünsche</p>
+                    <p class="mt-4 text-gray-500 font-medium lang-ja italic">お祝いを伝えるルナ</p>
+                </div>
+
+                <!-- Beispiel 2 -->
+                <div>
+                    <div class="video-container mx-auto max-w-[280px]">
+                        <video controls preload="none" playsinline loop poster="d59006a2-2813-44c9-9db2-9da5c89a21b6.jpg">
+                            <source src="deevid-111184445.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="mt-4 text-gray-500 font-medium lang-de italic">Mochi hat etwas zu sagen</p>
+                    <p class="mt-4 text-gray-500 font-medium lang-ja italic">メッセージを届けるモチ</p>
+                </div>
+
+                <!-- Beispiel 3 -->
+                <div>
+                    <div class="video-container mx-auto max-w-[280px]">
+                        <video controls preload="none" playsinline loop poster="Gemini_Generated_Image_8ohvzw8ohvzw8ohv.png">
+                            <source src="v2_bbe08cc5-195a-4e56-ba66-1e4f98adbd19.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="mt-4 text-gray-500 font-medium lang-de italic">Kira wünscht einen tollen Tag</p>
+                    <p class="mt-4 text-gray-500 font-medium lang-ja italic">良い一日を願うキラ</p>
+                </div>
             </div>
-            <p class="mt-4 text-gray-500 font-medium lang-de">Beispiel-Video</p>
-            <p class="mt-4 text-gray-500 font-medium lang-ja">サンプル動画</p>
         </div>
     </section>
 
+    <!-- Bestell-Formular -->
     <section id="order" class="bg-gray-100 py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
             <div class="bg-indigo-600 p-6 text-white text-center">
-                <h2 class="text-2xl font-bold lang-de">Bestellung aufgeben</h2>
-                <h2 class="text-2xl font-bold lang-ja">注文する</h2>
+                <h2 class="text-2xl font-bold lang-de">Deine Video-Botschaft</h2>
+                <h2 class="text-2xl font-bold lang-ja">ビデオメッセージの注文</h2>
             </div>
             
             <div class="p-8">
-                <div id="status-success" class="hidden bg-green-100 text-green-800 p-4 rounded-lg mb-4 text-center font-bold">
-                    <span class="lang-de">Erfolg! Weiterleitung zu Stripe...</span>
-                    <span class="lang-ja">成功！ストライプに移動します...</span>
-                </div>
-                
-                <div id="status-error" class="hidden bg-red-100 text-red-800 p-4 rounded-lg mb-4 text-center font-bold">
-                    <span class="lang-de">Fehler! Bitte prüfe deine Eingaben.</span>
-                    <span class="lang-ja">エラーが発生しました。</span>
+                <div id="status-success" class="hidden bg-green-100 text-green-800 p-6 rounded-lg mb-4 text-center">
+                    <div class="font-bold text-lg mb-2">
+                        <span class="lang-de">Wunderbar!</span>
+                        <span class="lang-ja">素晴らしい！</span>
+                    </div>
+                    <p class="text-sm">
+                        <span class="lang-de">Wir leiten dich jetzt zur Zahlung weiter. Sende uns das Foto danach bitte per LINE.</span>
+                        <span class="lang-ja">お支払いページへ移動します。完了後、LINEで写真を送ってください。</span>
+                    </p>
                 </div>
 
                 <form id="petvoice-form" class="space-y-6">
                     <div>
-                        <label class="block text-sm font-bold mb-2 lang-de">Deine E-Mail Adresse</label>
-                        <input name="email" type="email" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="email@beispiel.de">
+                        <label class="block text-sm font-bold mb-2 lang-de">E-Mail Adresse</label>
+                        <input name="email" type="email" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="ihre@mail.de">
                     </div>
                     <div>
-                        <label class="block text-sm font-bold mb-2 lang-de">Name des Tiers & Wunschlied</label>
-                        <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="z.B. Luna - Happy Birthday"></textarea>
+                        <label class="block text-sm font-bold mb-2 lang-de">Was soll dein Tier sagen?</label>
+                        <label class="block text-sm font-bold mb-2 lang-ja">ペットに何を話させたいですか？</label>
+                        <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="z.B. 'Hallo Oma!' oder 'Gute Besserung!'"></textarea>
                     </div>
                     
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-700 italic">
-                        <i class="fas fa-info-circle mr-2"></i>
-                        <span class="lang-de">Das Foto sendest du uns nach der Zahlung einfach per LINE zu.</span>
-                        <span class="lang-ja">写真は、お支払い後にLINEで送信してください。</span>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-700">
+                        <div class="flex items-start">
+                            <i class="fas fa-camera mt-1 mr-2"></i>
+                            <div>
+                                <p class="font-bold lang-de">Foto-Hinweis:</p>
+                                <p class="font-bold lang-ja">写真のヒント：</p>
+                                <p class="lang-de mt-1">Sende uns nach der Zahlung ein <strong>frontales Foto</strong> via LINE.</p>
+                                <p class="lang-ja mt-1">お支払い後、LINEでペットの<strong>正面写真</strong>を送ってください。</p>
+                            </div>
+                        </div>
                     </div>
 
                     <button type="submit" id="submit-btn" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition flex items-center justify-center shadow-lg">
@@ -117,11 +161,12 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-white py-10 text-center border-t">
         <div class="text-xl font-bold text-indigo-600 mb-4 italic">PetVoice</div>
         <div class="flex justify-center">
             <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-full font-bold flex items-center shadow-md hover:bg-green-600 transition">
-                <i class="fab fa-line mr-2 text-xl"></i> LINE Support
+                <i class="fab fa-line mr-2 text-xl"></i> LINE Support (@526pztsp)
             </a>
         </div>
     </footer>
@@ -151,7 +196,7 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             btn.disabled = true;
-            btn.innerText = "Verarbeite...";
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Übertrage...';
             
             const formData = new FormData(form);
 
@@ -164,18 +209,17 @@
 
                 if (response.ok) {
                     document.getElementById('status-success').classList.remove('hidden');
+                    form.classList.add('opacity-50', 'pointer-events-none');
                     setTimeout(() => {
-                        // Der aktuelle Stripe-Testlink
                         window.location.href = "https://buy.stripe.com/test_6oU5kDg5E5L2ckg4Do4Ja00";
-                    }, 1200);
+                    }, 3000); 
                 } else {
-                    document.getElementById('status-error').classList.remove('hidden');
                     btn.disabled = false;
                     btn.innerText = "Weiter zur Zahlung";
                 }
             } catch (err) {
-                console.error(err);
                 btn.disabled = false;
+                btn.innerText = "Weiter zur Zahlung";
             }
         });
     </script>
