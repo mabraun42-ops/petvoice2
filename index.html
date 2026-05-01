@@ -47,16 +47,31 @@
         <div class="max-w-6xl mx-auto text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-de">Lass dein Haustier singen!</h1>
             <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-ja">ペットに歌を歌わせよう！</h1>
-            <p class="text-xl mb-10 opacity-90 lang-de">Bestelle jetzt – Foto-Upload erfolgt direkt nach der Zahlung.</p>
+            <p class="text-xl mb-10 opacity-90 lang-de">Bestelle jetzt – das Foto sendest du uns einfach nach der Zahlung.</p>
             <p class="text-xl mb-10 opacity-90 lang-ja">今すぐ注文。お支払いの直後に写真を送ってください。</p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="#order" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform">
                     <span class="lang-de">Jetzt starten</span>
                     <span class="lang-ja">今すぐ開始</span>
                 </a>
+                <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg flex items-center justify-center shadow-lg hover:bg-green-600 transition">
+                    <i class="fab fa-line mr-2 text-2xl"></i> LINE Support
+                </a>
             </div>
         </div>
     </header>
+
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-sm mx-auto text-center">
+            <div class="video-container">
+                <video controls preload="auto" playsinline muted loop>
+                    <source src="v2_watermarked-39659fb8-1057-44bf-bb2f-47b35d2b30e3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <p class="mt-4 text-gray-500 font-medium lang-de">Beispiel-Video</p>
+            <p class="mt-4 text-gray-500 font-medium lang-ja">サンプル動画</p>
+        </div>
+    </section>
 
     <section id="order" class="bg-gray-100 py-16 px-4">
         <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
@@ -72,7 +87,7 @@
                 </div>
                 
                 <div id="status-error" class="hidden bg-red-100 text-red-800 p-4 rounded-lg mb-4 text-center font-bold">
-                    <span class="lang-de">Fehler! Bitte E-Mail prüfen oder später versuchen.</span>
+                    <span class="lang-de">Fehler! Bitte prüfe deine Eingaben.</span>
                     <span class="lang-ja">エラーが発生しました。</span>
                 </div>
 
@@ -88,8 +103,8 @@
                     
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-700 italic">
                         <i class="fas fa-info-circle mr-2"></i>
-                        <span class="lang-de">Das Foto sendest du uns ganz einfach nach der Zahlung per LINE oder E-Mail zu.</span>
-                        <span class="lang-ja">写真は、お支払い後にLINEまたはメールで送信してください。</span>
+                        <span class="lang-de">Das Foto sendest du uns nach der Zahlung einfach per LINE zu.</span>
+                        <span class="lang-ja">写真は、お支払い後にLINEで送信してください。</span>
                     </div>
 
                     <button type="submit" id="submit-btn" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition flex items-center justify-center shadow-lg">
@@ -104,10 +119,11 @@
 
     <footer class="bg-white py-10 text-center border-t">
         <div class="text-xl font-bold text-indigo-600 mb-4 italic">PetVoice</div>
-        <p class="text-xs text-gray-400 mb-4 lang-de">Support auch via LINE möglich:</p>
-        <a href="https://line.me/ti/p/@DEINE_ID" class="text-green-500 font-bold hover:underline flex items-center justify-center">
-            <i class="fab fa-line mr-2 text-xl"></i> LINE Support
-        </a>
+        <div class="flex justify-center">
+            <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-full font-bold flex items-center shadow-md hover:bg-green-600 transition">
+                <i class="fab fa-line mr-2 text-xl"></i> LINE Support
+            </a>
+        </div>
     </footer>
 
     <script>
@@ -149,10 +165,11 @@
                 if (response.ok) {
                     document.getElementById('status-success').classList.remove('hidden');
                     setTimeout(() => {
+                        // Der aktuelle Stripe-Testlink
                         window.location.href = "https://buy.stripe.com/test_6oU5kDg5E5L2ckg4Do4Ja00";
-                    }, 1000);
+                    }, 1200);
                 } else {
-                    alert("Es gab ein Problem mit Formspree. Bitte stelle sicher, dass keine Dateien gesendet werden.");
+                    document.getElementById('status-error').classList.remove('hidden');
                     btn.disabled = false;
                     btn.innerText = "Weiter zur Zahlung";
                 }
