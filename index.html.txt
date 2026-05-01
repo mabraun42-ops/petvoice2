@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetVoice - Dein Haustier lernt singen!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;700&display=swap');
+        body { font-family: 'Poppins', 'Noto Sans JP', sans-serif; }
+        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        
+        /* Initialzustand: Japanisch verstecken */
+        .lang-ja { display: none; }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Aspect Ratio für Hochkant-Videos wie deins */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 0.75rem;
+        }
+        .video-container video, .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-600 flex items-center">
+                <i class="fas fa-paw mr-2"></i> PetVoice
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <!-- Language Switcher -->
+                <div class="flex bg-gray-100 rounded-lg p-1 text-xs font-bold">
+                    <button onclick="setLanguage('de')" id="btn-de" class="px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition">DE</button>
+                    <button onclick="setLanguage('ja')" id="btn-ja" class="px-3 py-1 rounded text-gray-500 hover:text-indigo-600 transition">JP</button>
+                </div>
+                
+                <div class="hidden md:flex space-x-6 font-medium text-sm">
+                    <a href="#examples" class="hover:text-indigo-600 transition lang-de">Beispiele</a>
+                    <a href="#examples" class="hover:text-indigo-600 transition lang-ja">サンプル</a>
+                    <a href="#order" class="hover:text-indigo-600 transition lang-de">Bestellen</a>
+                    <a href="#order" class="hover:text-indigo-600 transition lang-ja">注文する</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient text-white py-20 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-de">Lass dein Haustier singen!</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-ja">ペットに歌を歌わせよう！</h1>
+            
+            <p class="text-xl mb-10 opacity-90 lang-de">Schick uns ein Foto – dein Haustier singt "Happy Birthday" oder spricht eine Nachricht!</p>
+            <p class="text-xl mb-10 opacity-90 lang-ja">写真を送るだけで、あなたのペットが「ハッピーバースデー」を歌ったりメッセージを話したりします！</p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#order" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition shadow-lg">
+                    <span class="lang-de">Video erstellen</span>
+                    <span class="lang-ja">動画を作成する</span>
+                </a>
+                <a href="https://line.me/ti/p/@DEINE_ID" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-green-600 transition flex items-center justify-center shadow-lg">
+                    <i class="fab fa-line mr-2 text-2xl"></i> LINE
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Example Videos Section -->
+    <section id="examples" class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 lang-de">Unsere glücklichen Sänger</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 lang-ja">ハッピーな歌手たち</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto lang-de">Schau dir an, wie unsere Kunden ihre Lieblinge zum Leben erweckt haben.</p>
+                <p class="text-gray-500 max-w-2xl mx-auto lang-ja">お客様がどのようにペットを生き生きとさせたか、ご覧ください。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video 1: Dein hochgeladenes Video -->
+                <div class="bg-gray-50 rounded-2xl p-4 shadow-sm border border-gray-100">
+                    <div class="video-container mb-4">
+                        <video controls poster="Gemini_Generated_Image_g3znmlg3znmlg3zn.png" muted loop>
+                            <source src="v2_watermarked-39659fb8-1057-44bf-bb2f-47b35d2b30e3.mp4" type="video/mp4">
+                            Ihr Browser unterstützt das Video-Tag nicht.
+                        </video>
+                    </div>
+                    <h3 class="font-bold text-center lang-de">Goldie spricht Japanisch</h3>
+                    <h3 class="font-bold text-center lang-ja">日本語を話すゴールディ</h3>
+                </div>
+
+                <!-- Platzhalter für weitere Videos (Horizontal/Querformat Beispiel) -->
+                <div class="bg-gray-50 rounded-2xl p-4 shadow-sm border border-gray-100 opacity-60">
+                    <div class="video-container mb-4">
+                        <div class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-xl">
+                            <i class="fas fa-play-circle text-4xl text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-center lang-de">Dein Video hier</h3>
+                    <h3 class="font-bold text-center lang-ja">あなたのビデオ</h3>
+                </div>
+
+                <!-- Video 3 Platzhalter -->
+                <div class="bg-gray-50 rounded-2xl p-4 shadow-sm border border-gray-100 opacity-60">
+                    <div class="video-container mb-4">
+                        <div class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-xl">
+                            <i class="fas fa-play-circle text-4xl text-gray-400"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-center lang-de">Dein Video hier</h3>
+                    <h3 class="font-bold text-center lang-ja">あなたのビデオ</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order" class="bg-gray-100 py-16 px-4">
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="bg-indigo-600 p-6 text-white text-center">
+                <h2 class="text-2xl font-bold lang-de">Jetzt Video bestellen</h2>
+                <h2 class="text-2xl font-bold lang-ja">今すぐ動画を注文する</h2>
+                <p class="opacity-90">14,99 € / ¥2,400</p>
+            </div>
+            
+            <form action="https://formspree.io/f/deine_id" method="POST" enctype="multipart/form-data" id="orderForm" class="p-8 space-y-6">
+                <div>
+                    <label class="block text-sm font-semibold mb-2 lang-de">Name deines Haustiers</label>
+                    <label class="block text-sm font-semibold mb-2 lang-ja">ペットの名前</label>
+                    <input name="petName" type="text" placeholder="Bello / ぽち" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-indigo-500 outline-none transition" required>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2 lang-de">Textwunsch / Lied</label>
+                    <label class="block text-sm font-semibold mb-2 lang-ja">希望のテキスト / 曲</label>
+                    <textarea name="message" placeholder="..." class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-indigo-500 outline-none transition h-24" required></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2 lang-de">Foto hochladen</label>
+                    <label class="block text-sm font-semibold mb-2 lang-ja">写真をアップロード</label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-indigo-500 transition cursor-pointer bg-gray-50" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-camera text-3xl text-gray-400 mb-2"></i>
+                        <p class="text-xs text-gray-500 lang-de">Klicken zum Auswählen</p>
+                        <p class="text-xs text-gray-500 lang-ja">クリックして選択</p>
+                        <input name="attachment" type="file" id="fileInput" class="hidden" accept="image/*" required>
+                    </div>
+                    <p id="fileName" class="text-xs text-indigo-600 mt-2 font-medium italic"></p>
+                </div>
+
+                <div class="pt-6 border-t">
+                    <p class="text-sm font-semibold mb-4 flex items-center">
+                        <i class="fas fa-lock mr-2 text-green-500"></i>
+                        <span class="lang-de">Sicher bezahlen mit VISA / Mastercard:</span>
+                        <span class="lang-ja">VISA / Mastercard で安全に支払う:</span>
+                    </p>
+                    
+                    <div class="space-y-3">
+                        <button type="submit" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition flex items-center justify-center shadow-lg">
+                            <i class="fab fa-cc-visa text-2xl mr-3"></i>
+                            <span class="lang-de">Jetzt mit Karte bezahlen</span>
+                            <span class="lang-ja">カードで支払う</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 px-4 border-t">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left mb-6 md:mb-0">
+                <div class="text-xl font-bold text-indigo-600 mb-2">PetVoice</div>
+                <p class="text-gray-400 text-sm lang-de">Dein Haustier, unsere Stimme.</p>
+                <p class="text-gray-400 text-sm lang-ja">あなたのペット、私たちの声。</p>
+            </div>
+            <a href="https://line.me/ti/p/@DEINE_ID" class="flex items-center text-green-500 font-bold text-lg hover:underline">
+                <i class="fab fa-line text-3xl mr-2"></i> LINE Support
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            const deElements = document.querySelectorAll('.lang-de');
+            const jaElements = document.querySelectorAll('.lang-ja');
+            const btnDe = document.getElementById('btn-de');
+            const btnJa = document.getElementById('btn-ja');
+
+            if (lang === 'ja') {
+                deElements.forEach(el => el.style.display = 'none');
+                jaElements.forEach(el => el.style.display = 'block');
+                btnJa.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
+                btnJa.classList.remove('text-gray-500');
+                btnDe.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
+                btnDe.classList.add('text-gray-500');
+            } else {
+                jaElements.forEach(el => el.style.display = 'none');
+                deElements.forEach(el => el.style.display = 'block');
+                btnDe.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
+                btnDe.classList.remove('text-gray-500');
+                btnJa.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
+                btnJa.classList.add('text-gray-500');
+            }
+        }
+
+        const fileInput = document.getElementById('fileInput');
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                document.getElementById('fileName').innerText = "✓ " + e.target.files[0].name;
+            }
+        });
+    </script>
+</body>
+</html>
