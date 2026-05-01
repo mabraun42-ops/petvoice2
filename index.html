@@ -25,26 +25,20 @@
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
         }
-        #loading-overlay {
+        /* Status-Meldungen Styling */
+        [data-fs-success], [data-fs-error] {
             display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.8);
-            z-index: 100;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: bold;
         }
+        [data-fs-success] { background-color: #d1fae5; color: #065f46; }
+        [data-fs-error] { background-color: #fee2e2; color: #991b1b; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-
-    <!-- Lade-Bildschirm während der Übertragung -->
-    <div id="loading-overlay">
-        <i class="fas fa-spinner fa-spin text-4xl text-indigo-600 mb-4"></i>
-        <p class="font-bold lang-de">Übertrage Foto...</p>
-        <p class="font-bold lang-ja">写真を送信中...</p>
-    </div>
 
     <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
@@ -54,8 +48,8 @@
             </div>
             <div class="flex items-center space-x-4">
                 <div class="flex bg-gray-100 rounded-lg p-1 text-xs font-bold">
-                    <button onclick="setLanguage('de')" id="btn-de" class="px-3 py-1 rounded bg-white shadow-sm text-indigo-600 transition">DE</button>
-                    <button onclick="setLanguage('ja')" id="btn-ja" class="px-3 py-1 rounded text-gray-500 hover:text-indigo-600 transition">JP</button>
+                    <button onclick="setLanguage('de')" id="btn-de" class="px-3 py-1 rounded bg-white shadow-sm text-indigo-600">DE</button>
+                    <button onclick="setLanguage('ja')" id="btn-ja" class="px-3 py-1 rounded text-gray-500">JP</button>
                 </div>
             </div>
         </div>
@@ -81,15 +75,15 @@
     </header>
 
     <!-- Beispiel -->
-    <section id="examples" class="py-20 px-4 bg-white">
+    <section class="py-20 px-4 bg-white">
         <div class="max-w-sm mx-auto text-center">
             <div class="video-container">
                 <video controls preload="auto" playsinline muted loop>
                     <source src="v2_watermarked-39659fb8-1057-44bf-bb2f-47b35d2b30e3.mp4" type="video/mp4">
                 </video>
             </div>
-            <p class="mt-4 text-gray-500 font-medium lang-de">So sieht ein Ergebnis aus!</p>
-            <p class="mt-4 text-gray-500 font-medium lang-ja">サンプルの仕上がりです！</p>
+            <p class="mt-4 text-gray-500 font-medium lang-de">Beispiel-Video</p>
+            <p class="mt-4 text-gray-500 font-medium lang-ja">サンプル動画</p>
         </div>
     </section>
 
@@ -101,31 +95,41 @@
                 <h2 class="text-2xl font-bold lang-ja">注文フォーム</h2>
             </div>
             
-            <form id="orderForm" class="p-8 space-y-6">
-                <div>
-                    <label class="block text-sm font-bold mb-2 lang-de">Name des Tiers</label>
-                    <label class="block text-sm font-bold mb-2 lang-ja">ペットの名前</label>
-                    <input name="petName" type="text" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-indigo-500 outline-none" required>
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-2 lang-de">Wunschlied / Nachricht</label>
-                    <label class="block text-sm font-bold mb-2 lang-ja">希望の曲 / メッセージ</label>
-                    <textarea name="message" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-indigo-500 outline-none h-24" required></textarea>
-                </div>
-                <div>
-                    <label class="block text-sm font-bold mb-2 lang-de">Foto hochladen</label>
-                    <label class="block text-sm font-bold mb-2 lang-ja">写真をアップロード</label>
-                    <input name="photo" type="file" accept="image/*" class="w-full text-sm text-gray-500" required>
-                </div>
+            <div class="p-8">
+                <!-- Status Meldungen für Formspree -->
+                <div data-fs-success class="lang-de">Erfolg! Du wirst jetzt zur Zahlung weitergeleitet...</div>
+                <div data-fs-success class="lang-ja">成功！支払いページに移動します...</div>
+                <div data-fs-error class="lang-de">Fehler! Bitte überprüfe deine Eingaben oder kontaktiere den Support.</div>
+                <div data-fs-error class="lang-ja">エラーが発生しました。入力内容を確認するか、サポートにお問い合わせください。</div>
 
-                <button type="submit" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition flex items-center justify-center shadow-lg">
-                    <i class="fab fa-cc-visa text-2xl mr-3"></i>
-                    <span class="lang-de">Senden & Bezahlen</span>
-                    <span class="lang-ja">送信して支払う</span>
-                </button>
-                <p class="text-[10px] text-center text-gray-400 lang-de italic">Nach dem Senden wirst du zur sicheren Zahlung weitergeleitet.</p>
-                <p class="text-[10px] text-center text-gray-400 lang-ja italic">送信後、安全な支払いページに移動します。</p>
-            </form>
+                <form id="petvoice-form" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2 lang-de">E-Mail Adresse</label>
+                        <label class="block text-sm font-bold mb-2 lang-ja">メールアドレス</label>
+                        <input name="email" type="email" data-fs-field class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-indigo-500 outline-none" required placeholder="deine@mail.com">
+                        <span data-fs-error="email" class="text-red-500 text-xs"></span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2 lang-de">Name des Tiers & Wunschlied</label>
+                        <label class="block text-sm font-bold mb-2 lang-ja">ペットの名前と希望の曲</label>
+                        <textarea name="message" data-fs-field class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-indigo-500 outline-none h-24" required placeholder="Bello - Happy Birthday"></textarea>
+                        <span data-fs-error="message" class="text-red-500 text-xs"></span>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2 lang-de">Foto hochladen</label>
+                        <label class="block text-sm font-bold mb-2 lang-ja">写真をアップロード</label>
+                        <input name="photo" type="file" accept="image/*" data-fs-field class="w-full text-sm text-gray-500" required>
+                    </div>
+
+                    <button type="submit" data-fs-submit-btn class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition flex items-center justify-center shadow-lg disabled:opacity-50">
+                        <i class="fab fa-cc-visa text-2xl mr-3"></i>
+                        <span class="lang-de">Senden & Bezahlen</span>
+                        <span class="lang-ja">送信して支払う</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -137,6 +141,7 @@
         </a>
     </footer>
 
+    <!-- Formspree Scripts -->
     <script>
         // Sprachumschaltung
         function setLanguage(lang) {
@@ -157,39 +162,20 @@
             }
         }
 
-        // NEU: Formular-Logik mit KOSTENLOSER Weiterleitung
-        const orderForm = document.getElementById('orderForm');
-        const loadingOverlay = document.getElementById('loading-overlay');
-        const stripeLink = "https://buy.stripe.com/test_6oU5kDg5E5L2ckg4Do4Ja00";
-        const formspreeUrl = "https://formspree.io/f/mnjwqyqd";
-
-        orderForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            loadingOverlay.style.display = 'flex';
-
-            const formData = new FormData(orderForm);
-
-            try {
-                const response = await fetch(formspreeUrl, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Erfolgreich gesendet -> Jetzt zu Stripe weiterleiten
-                    window.location.href = stripeLink;
-                } else {
-                    alert('Hoppla! Da gab es ein Problem. Bitte versuche es erneut oder nutze LINE Support.');
-                    loadingOverlay.style.display = 'none';
-                }
-            } catch (error) {
-                alert('Netzwerkfehler. Bitte prüfe deine Internetverbindung.');
-                loadingOverlay.style.display = 'none';
+        // Formspree AJAX Integration
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        
+        formspree('initForm', { 
+            formElement: '#petvoice-form', 
+            formId: 'mnjwqyqd',
+            onSuccess: function() {
+                // Nach Erfolg zu Stripe weiterleiten
+                setTimeout(function() {
+                    window.location.href = "https://buy.stripe.com/test_6oU5kDg5E5L2ckg4Do4Ja00";
+                }, 1000);
             }
         });
     </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
