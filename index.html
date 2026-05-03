@@ -11,15 +11,14 @@
         body { font-family: 'Poppins', 'Noto Sans JP', sans-serif; }
         .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         
-        /* モバイルでのタップ時のハイライトを無効化 */
         * {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
         }
 
-        /* 初期表示設定: 日本語以外を非表示に強制 */
-        .lang-de, .lang-en, .legal-content { display: none !important; }
-        .lang-ja { display: block !important; }
+        /* Standardmäßig verstecken wir die Rechtsinhalte, außer die JS-Logik schaltet sie frei */
+        .lang-de, .lang-en { display: none; }
+        .lang-ja { display: block; }
 
         .video-container {
             position: relative;
@@ -43,15 +42,13 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div onclick="window.location.reload()" class="text-2xl font-bold text-indigo-600 flex items-center cursor-pointer">
+            <div onclick="window.location.href='index.html'" class="text-2xl font-bold text-indigo-600 flex items-center cursor-pointer">
                 <i class="fas fa-paw mr-2"></i> PetVoice
             </div>
-            <div class="flex items-center space-x-4">
-                <div class="flex bg-gray-100 rounded-lg p-1 text-xs font-bold">
-                    <button onclick="setLanguage('ja')" id="btn-ja" class="px-3 py-1 rounded bg-white shadow-sm text-indigo-600">JP</button>
-                    <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 rounded text-gray-500">EN</button>
-                    <button onclick="setLanguage('de')" id="btn-de" class="px-3 py-1 rounded text-gray-500">DE</button>
-                </div>
+            <div class="flex bg-gray-100 rounded-lg p-1 text-xs font-bold">
+                <button onclick="setLanguage('ja')" id="btn-ja" class="px-3 py-1 rounded bg-white shadow-sm text-indigo-600">JP</button>
+                <button onclick="setLanguage('en')" id="btn-en" class="px-3 py-1 rounded text-gray-500">EN</button>
+                <button onclick="setLanguage('de')" id="btn-de" class="px-3 py-1 rounded text-gray-500">DE</button>
             </div>
         </div>
     </nav>
@@ -72,9 +69,6 @@
                         <span class="lang-en">Create Now</span>
                         <span class="lang-de">Jetzt erstellen</span>
                     </a>
-                    <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg flex items-center justify-center shadow-lg hover:bg-green-600 transition">
-                        <i class="fab fa-line mr-2 text-2xl"></i> LINE Support
-                    </a>
                 </div>
             </div>
         </header>
@@ -86,28 +80,25 @@
                 <h2 class="text-3xl font-bold mb-12 lang-en">Magical Moments</h2>
                 <h2 class="text-3xl font-bold mb-12 lang-de">Magische Momente</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- 1. Luna (luna-bday.mp4) -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
-                            <video controls preload="metadata" playsinline loop poster="Gemini_Generated_Image_g3znmlg3znmlg3zn.png">
+                            <video controls preload="metadata" playsinline loop>
                                 <source src="luna-bday.mp4" type="video/mp4">
                             </video>
                         </div>
                         <p class="mt-4 text-gray-500 font-medium italic">Luna</p>
                     </div>
-                    <!-- 2. Kira (v2_bbe08cc5...) -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
-                            <video controls preload="metadata" playsinline loop poster="Gemini_Generated_Image_8ohvzw8ohvzw8ohv.png">
+                            <video controls preload="metadata" playsinline loop>
                                 <source src="v2_bbe08cc5-195a-4e56-ba66-1e4f98adbd19.mp4" type="video/mp4">
                             </video>
                         </div>
                         <p class="mt-4 text-gray-500 font-medium italic">Kira</p>
                     </div>
-                    <!-- 3. Mochi (deevid-111184445.mp4) -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
-                            <video controls preload="metadata" playsinline loop poster="d59006a2-2813-44c9-9db2-9da5c89a21b6.jpg">
+                            <video controls preload="metadata" playsinline loop>
                                 <source src="deevid-111184445.mp4" type="video/mp4">
                             </video>
                         </div>
@@ -132,34 +123,31 @@
                             <input name="email" type="email" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="your@email.com">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold mb-1 lang-ja">ペットに何を話させたり、歌わせたりしたいですか？</label>
-                            <label class="block text-sm font-bold mb-1 lang-en">What should your pet say or sing?</label>
-                            <label class="block text-sm font-bold mb-1 lang-de">Was soll dein Tier sagen oder singen?</label>
-                            
-                            <p class="text-xs text-gray-500 mb-3 lang-ja italic">※メッセージ内容や曲名をできるだけ詳しく入力してください。</p>
-                            <p class="text-xs text-gray-500 mb-3 lang-en italic">*Please provide the message text or song title as accurately as possible.</p>
-                            <p class="text-xs text-gray-500 mb-3 lang-de italic">*Bitte gib den Text oder Songtitel so genau wie möglich an.</p>
-                            
-                            <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="Ex: Happy Birthday / Hello Marco!"></textarea>
+                            <label class="block text-sm font-bold mb-1 lang-ja">ペットに何を話させたいですか？</label>
+                            <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="例：誕生日おめでとう！ / いつもありがとう"></textarea>
                         </div>
                         <button type="submit" id="submit-btn" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition shadow-lg">
                             <span class="lang-ja">お支払いへ進む</span>
                             <span class="lang-en">Proceed to Payment</span>
                             <span class="lang-de">Weiter zur Zahlung</span>
                         </button>
+                        <!-- Stripe Anforderung: Link vom Zahlungsbereich -->
+                        <p class="text-center">
+                            <button type="button" onclick="showLegal('tokutei')" class="text-xs text-gray-400 underline">特定商取引法に基づく表記 (Commercial Disclosure)</button>
+                        </p>
                     </form>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Legal Pages -->
+    <!-- Legal Pages Section -->
     <div id="legal-pages" class="hidden p-8 max-w-4xl mx-auto bg-white min-h-screen">
-        <button onclick="window.location.reload()" class="mb-8 text-indigo-600 font-bold flex items-center">
-            <i class="fas fa-arrow-left mr-2"></i> Back / 戻る
+        <button onclick="window.location.href='index.html'" class="mb-8 text-indigo-600 font-bold flex items-center">
+            <i class="fas fa-arrow-left mr-2"></i> 戻る (Back)
         </button>
         
-        <div id="tokutei" class="legal-content space-y-8">
+        <div id="tokutei" class="space-y-8">
             <h2 class="text-2xl font-bold border-b pb-2">特定商取引法に基づく表記 (Commercial Disclosure)</h2>
             <table class="w-full text-sm border-collapse">
                 <tbody>
@@ -173,7 +161,7 @@
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">電話番号 (Phone Number)</td>
-                        <td class="py-3 text-gray-700">080-9573-8912</td>
+                        <td class="py-3 text-gray-700">080-9573-8912<br><span class="text-xs text-gray-400">受付時間：10:00 - 18:00 (土日祝を除く)</span></td>
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">メールアドレス (Email)</td>
@@ -193,34 +181,31 @@
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">代金の支払時期 (Payment Period)</td>
-                        <td class="py-3 text-gray-700">クレジットカード決済：直ちに処理されます (Immediately)</td>
+                        <td class="py-3 text-gray-700">クレジットカード決済：直ちに処理されます</td>
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">支払方法 (Payment Methods)</td>
-                        <td class="py-3 text-gray-700">クレジットカード (Credit Cards via Stripe)</td>
+                        <td class="py-3 text-gray-700">クレジットカード (via Stripe)</td>
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">引渡時期 (Delivery Time)</td>
-                        <td class="py-3 text-gray-700">お支払いおよび写真の送付完了後、24〜48時間以内にデジタルデータとして提供 (Within 24-48h after completion)</td>
+                        <td class="py-3 text-gray-700">お支払いおよび写真送付完了後、24〜48時間以内にLINE経由で納品</td>
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">返品・交換 (Returns/Refunds)</td>
-                        <td class="py-3 text-gray-700 space-y-2">
-                            <p><strong>＜お客様都合による返品・交換＞</strong><br>
-                            デジタルコンテンツの特性上、お支払い後のキャンセルおよび返品は受け付けておりません。<br>
-                            (No refunds for digital content after payment is processed.)</p>
-                            <p><strong>＜欠陥がある場合の返品・交換＞</strong><br>
-                            生成されたビデオファイルに再生不良等の欠陥がある場合は、LINEにてご連絡ください。速やかに再生成 oder 修正対応をいたします。<br>
-                            (In case of defective files, we will provide a fix or regeneration.)</p>
+                        <td class="py-3 text-gray-700 space-y-4">
+                            <div>
+                                <p class="font-bold underline">＜お客様都合による返品・交換＞</p>
+                                <p>デジタルコンテンツの特性上、お支払い完了後のキャンセルおよび返品・返金は受け付けておりません。</p>
+                            </div>
+                            <div>
+                                <p class="font-bold underline">＜不備・欠陥がある場合の返品・交換＞</p>
+                                <p>納品されたビデオファイルに再生不良等の不備がある場合は、公式LINE（080-9573-8912）までご連絡ください。速やかに修正または再生成対応をいたします。その際の費用負担はございません。</p>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <div id="privacy" class="legal-content">
-            <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
-            <p>We process your data only for order fulfillment. Photos are deleted after delivery.</p>
         </div>
     </div>
 
@@ -228,59 +213,44 @@
     <footer class="bg-white py-12 text-center border-t mt-10">
         <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-400 mb-8 px-4">
             <button onclick="showLegal('tokutei')" class="hover:text-indigo-600">特定商取引法に基づく表記 (Commercial Disclosure)</button>
-            <button onclick="showLegal('privacy')" class="hover:text-indigo-600">Privacy Policy</button>
-        </div>
-        <div class="flex justify-center mb-8 px-4">
-            <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-full font-bold flex items-center shadow-md transition hover:bg-green-600">
-                <i class="fab fa-line mr-2 text-xl"></i> LINE Support
-            </a>
+            <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="hover:text-indigo-600">LINE Support</a>
         </div>
         <p class="text-gray-400 text-xs">© 2024 PetVoice. Marco Braun.</p>
     </footer>
 
     <script>
         function setLanguage(lang) {
-            const langs = ['de', 'ja', 'en'];
-            langs.forEach(l => {
-                const elements = document.querySelectorAll('.lang-' + l);
-                elements.forEach(el => {
-                    // 強制的に display スタイルを操作
-                    if (l === lang) {
-                        el.style.setProperty('display', 'block', 'important');
-                    } else {
-                        el.style.setProperty('display', 'none', 'important');
-                    }
-                });
-                
+            ['ja', 'en', 'de'].forEach(l => {
+                const els = document.querySelectorAll('.lang-' + l);
+                els.forEach(el => el.style.display = (l === lang ? 'block' : 'none'));
                 const btn = document.getElementById('btn-' + l);
-                if (l === lang) {
-                    btn.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
-                    btn.classList.remove('text-gray-500');
-                } else {
-                    btn.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
-                    btn.classList.add('text-gray-500');
+                if(btn) {
+                    btn.classList.toggle('bg-white', l === lang);
+                    btn.classList.toggle('shadow-sm', l === lang);
+                    btn.classList.toggle('text-indigo-600', l === lang);
+                    btn.classList.toggle('text-gray-500', l !== lang);
                 }
             });
         }
 
-        // 初回読み込み時に日本語に設定
-        window.addEventListener('DOMContentLoaded', () => {
-            setLanguage('ja');
-        });
-
         function showLegal(id) {
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('legal-pages').classList.remove('hidden');
-            document.querySelectorAll('.legal-content').forEach(c => c.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
             window.scrollTo(0, 0);
         }
+
+        // Automatisches Öffnen bei #tokutei Anker (Wichtig für Stripe!)
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#tokutei') {
+                showLegal('tokutei');
+            }
+        });
 
         const form = document.getElementById('petvoice-form');
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submit-btn');
-            btn.disabled = true; btn.innerText = "...";
+            btn.disabled = true; btn.innerText = "Processing...";
             try {
                 const response = await fetch("https://formspree.io/f/mnjwqyqd", {
                     method: "POST",
