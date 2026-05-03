@@ -11,15 +11,15 @@
         body { font-family: 'Poppins', 'Noto Sans JP', sans-serif; }
         .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         
-        /* Verhindert das Ausgrauen beim Antippen auf Mobilgeräten */
+        /* モバイルでのタップ時のハイライトを無効化 */
         * {
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
         }
 
-        /* Sprachsteuerung: Verstecke DE und EN beim Laden */
-        .lang-de, .lang-en, .legal-content { display: none; }
-        .lang-ja { display: block; }
+        /* 初期表示設定: 日本語以外を非表示に強制 */
+        .lang-de, .lang-en, .legal-content { display: none !important; }
+        .lang-ja { display: block !important; }
 
         .video-container {
             position: relative;
@@ -86,32 +86,32 @@
                 <h2 class="text-3xl font-bold mb-12 lang-en">Magical Moments</h2>
                 <h2 class="text-3xl font-bold mb-12 lang-de">Magische Momente</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Luna (Jetzt an 1. Stelle - luna-bday.mp4) -->
+                    <!-- 1. Luna (luna-bday.mp4) -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
-                            <video controls preload="none" playsinline loop poster="Gemini_Generated_Image_g3znmlg3znmlg3zn.png">
+                            <video controls preload="metadata" playsinline loop poster="Gemini_Generated_Image_g3znmlg3znmlg3zn.png">
                                 <source src="luna-bday.mp4" type="video/mp4">
                             </video>
                         </div>
                         <p class="mt-4 text-gray-500 font-medium italic">Luna</p>
                     </div>
-                    <!-- Mochi (Jetzt an 2. Stelle) -->
+                    <!-- 2. Kira (v2_bbe08cc5...) -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
-                            <video controls preload="none" playsinline loop poster="d59006a2-2813-44c9-9db2-9da5c89a21b6.jpg">
-                                <source src="deevid-111184445.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <p class="mt-4 text-gray-500 font-medium italic">Mochi</p>
-                    </div>
-                    <!-- Kira (3. Stelle) -->
-                    <div>
-                        <div class="video-container mx-auto max-w-[280px]">
-                            <video controls preload="none" playsinline loop poster="Gemini_Generated_Image_8ohvzw8ohvzw8ohv.png">
+                            <video controls preload="metadata" playsinline loop poster="Gemini_Generated_Image_8ohvzw8ohvzw8ohv.png">
                                 <source src="v2_bbe08cc5-195a-4e56-ba66-1e4f98adbd19.mp4" type="video/mp4">
                             </video>
                         </div>
                         <p class="mt-4 text-gray-500 font-medium italic">Kira</p>
+                    </div>
+                    <!-- 3. Mochi (deevid-111184445.mp4) -->
+                    <div>
+                        <div class="video-container mx-auto max-w-[280px]">
+                            <video controls preload="metadata" playsinline loop poster="d59006a2-2813-44c9-9db2-9da5c89a21b6.jpg">
+                                <source src="deevid-111184445.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <p class="mt-4 text-gray-500 font-medium italic">Mochi</p>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">引渡時期 (Delivery Time)</td>
-                        <td class="py-3 text-gray-700">お支払いおよび写真 Herr 送付完了後、24〜48時間以内にデジタルデータとして提供 (Within 24-48h after completion)</td>
+                        <td class="py-3 text-gray-700">お支払いおよび写真の送付完了後、24〜48時間以内にデジタルデータとして提供 (Within 24-48h after completion)</td>
                     </tr>
                     <tr class="border-b">
                         <td class="py-3 font-bold">返品・交換 (Returns/Refunds)</td>
@@ -243,10 +243,31 @@
             const langs = ['de', 'ja', 'en'];
             langs.forEach(l => {
                 const elements = document.querySelectorAll('.lang-' + l);
-                elements.forEach(el => el.style.display = (l === lang ? 'block' : 'none'));
-                document.getElementById('btn-' + l).className = (l === lang ? 'px-3 py-1 rounded bg-white shadow-sm text-indigo-600' : 'px-3 py-1 rounded text-gray-500');
+                elements.forEach(el => {
+                    // 強制的に display スタイルを操作
+                    if (l === lang) {
+                        el.style.setProperty('display', 'block', 'important');
+                    } else {
+                        el.style.setProperty('display', 'none', 'important');
+                    }
+                });
+                
+                const btn = document.getElementById('btn-' + l);
+                if (l === lang) {
+                    btn.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
+                    btn.classList.add('text-gray-500');
+                }
             });
         }
+
+        // 初回読み込み時に日本語に設定
+        window.addEventListener('DOMContentLoaded', () => {
+            setLanguage('ja');
+        });
+
         function showLegal(id) {
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('legal-pages').classList.remove('hidden');
@@ -254,6 +275,7 @@
             document.getElementById(id).style.display = 'block';
             window.scrollTo(0, 0);
         }
+
         const form = document.getElementById('petvoice-form');
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
