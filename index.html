@@ -42,7 +42,7 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div onclick="window.location.href='index.html'" class="text-2xl font-bold text-indigo-600 flex items-center cursor-pointer">
+            <div onclick="resetPage()" class="text-2xl font-bold text-indigo-600 flex items-center cursor-pointer">
                 <i class="fas fa-paw mr-2"></i> PetVoice
             </div>
             <div class="flex bg-gray-100 rounded-lg p-1 text-xs font-bold">
@@ -143,7 +143,7 @@
 
     <!-- Legal Pages Section -->
     <div id="legal-pages" class="hidden p-8 max-w-4xl mx-auto bg-white min-h-screen">
-        <button onclick="window.location.href='index.html'" class="mb-8 text-indigo-600 font-bold flex items-center">
+        <button onclick="resetPage()" class="mb-8 text-indigo-600 font-bold flex items-center">
             <i class="fas fa-arrow-left mr-2"></i> 戻る (Back)
         </button>
         
@@ -234,14 +234,32 @@
         }
 
         function showLegal(id) {
+            // Update URL hash without reloading
+            window.location.hash = id;
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('legal-pages').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function resetPage() {
+            window.location.hash = '';
+            document.getElementById('main-page').style.display = 'block';
+            document.getElementById('legal-pages').classList.add('hidden');
             window.scrollTo(0, 0);
         }
 
         // Automatisches Öffnen bei #tokutei Anker (Wichtig für Stripe!)
         window.addEventListener('load', () => {
             if (window.location.hash === '#tokutei') {
+                showLegal('tokutei');
+            }
+        });
+        
+        // Listen for back button
+        window.addEventListener('hashchange', () => {
+            if (!window.location.hash) {
+                resetPage();
+            } else if (window.location.hash === '#tokutei') {
                 showLegal('tokutei');
             }
         });
