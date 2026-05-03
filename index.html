@@ -48,40 +48,37 @@
         </div>
     </nav>
 
-    <!-- Main Content Wrapper -->
+    <!-- Main Content -->
     <div id="main-page">
-        <!-- Hero Bereich -->
         <header class="hero-gradient text-white py-16 px-4">
             <div class="max-w-6xl mx-auto text-center">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-ja">ペットにおしゃべりさせよう！</h1>
                 <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-en">Let your pet speak!</h1>
                 <h1 class="text-4xl md:text-6xl font-bold mb-6 lang-de">Lass dein Haustier sprechen!</h1>
-
                 <p class="text-xl mb-10 opacity-90 lang-ja">あなたの大切なペットが届ける、世界に一つだけのビデオメッセージ。</p>
                 <p class="text-xl mb-10 opacity-90 lang-en">Unique video messages from your beloved pet.</p>
                 <p class="text-xl mb-10 opacity-90 lang-de">Einzigartige Video-Botschaften von deinem Liebling.</p>
-
                 <div class="flex flex-col md:flex-row justify-center gap-4">
                     <a href="#order" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform">
                         <span class="lang-ja">今すぐ作成する</span>
                         <span class="lang-en">Create Now</span>
                         <span class="lang-de">Jetzt erstellen</span>
                     </a>
-                    <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg flex items-center justify-center shadow-lg hover:bg-green-600 transition">
+                    <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg flex items-center justify-center shadow-lg">
                         <i class="fab fa-line mr-2 text-2xl"></i> LINE Support
                     </a>
                 </div>
             </div>
         </header>
 
-        <!-- Beispiel Sektion mit 3 Videos -->
+        <!-- Videos -->
         <section class="py-20 px-4 bg-white">
             <div class="max-w-6xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-4 lang-ja">魔法のような瞬間</h2>
-                <h2 class="text-3xl font-bold mb-4 lang-en">Magical Moments</h2>
-                <h2 class="text-3xl font-bold mb-4 lang-de">Magische Momente</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                    <!-- Beispiel 1: Mochi -->
+                <h2 class="text-3xl font-bold mb-12 lang-ja">魔法のような瞬間</h2>
+                <h2 class="text-3xl font-bold mb-12 lang-en">Magical Moments</h2>
+                <h2 class="text-3xl font-bold mb-12 lang-de">Magische Momente</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Mochi -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
                             <video controls preload="none" playsinline loop poster="d59006a2-2813-44c9-9db2-9da5c89a21b6.jpg">
@@ -90,7 +87,7 @@
                         </div>
                         <p class="mt-4 text-gray-500 font-medium italic">Mochi</p>
                     </div>
-                    <!-- Beispiel 2: Luna -->
+                    <!-- Luna -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
                             <video controls preload="none" playsinline loop poster="Gemini_Generated_Image_g3znmlg3znmlg3zn.png">
@@ -99,7 +96,7 @@
                         </div>
                         <p class="mt-4 text-gray-500 font-medium italic">Luna</p>
                     </div>
-                    <!-- Beispiel 3: Kira -->
+                    <!-- Kira -->
                     <div>
                         <div class="video-container mx-auto max-w-[280px]">
                             <video controls preload="none" playsinline loop poster="Gemini_Generated_Image_8ohvzw8ohvzw8ohv.png">
@@ -112,22 +109,20 @@
             </div>
         </section>
 
-        <!-- Bestell-Formular -->
+        <!-- Order Section -->
         <section id="order" class="bg-gray-100 py-16 px-4">
             <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
                 <div class="bg-indigo-600 p-6 text-white text-center">
-                    <h2 class="text-2xl font-bold lang-ja">ビデオメッセージの注文</h2>
-                    <h2 class="text-2xl font-bold lang-en">Order Video Message</h2>
-                    <h2 class="text-2xl font-bold lang-de">Deine Video-Botschaft</h2>
+                    <h2 class="text-2xl font-bold">2,400 ¥ (税込 / incl. Tax)</h2>
                 </div>
                 <div class="p-8">
                     <form id="petvoice-form" class="space-y-6">
                         <input name="email" type="email" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="Email">
-                        <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="Nachricht / Message"></textarea>
+                        <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="Message / Song"></textarea>
                         <button type="submit" id="submit-btn" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition shadow-lg">
-                            <span class="lang-ja">お支払いへ進む (2,400 ¥)</span>
-                            <span class="lang-en">Proceed to Payment (2,400 ¥)</span>
-                            <span class="lang-de">Weiter zur Zahlung (2,400 ¥)</span>
+                            <span class="lang-ja">お支払いへ進む</span>
+                            <span class="lang-en">Proceed to Payment</span>
+                            <span class="lang-de">Weiter zur Zahlung</span>
                         </button>
                     </form>
                 </div>
@@ -135,49 +130,85 @@
         </section>
     </div>
 
-    <!-- Legal Pages -->
+    <!-- Legal Pages (Stripe Tokutei Requirements) -->
     <div id="legal-pages" class="hidden p-8 max-w-4xl mx-auto bg-white min-h-screen">
         <button onclick="window.location.reload()" class="mb-8 text-indigo-600 font-bold flex items-center">
-            <i class="fas fa-arrow-left mr-2"></i> Zurück / Back
+            <i class="fas fa-arrow-left mr-2"></i> Back / 戻る
         </button>
         
-        <div id="impressum" class="legal-content">
-            <h2 class="text-2xl font-bold mb-4">Impressum / Legal Notice</h2>
-            <p class="mb-2"><strong>Betreiber:</strong> ブラウン マルコ (Braun Marco)</p>
-            <p class="mb-2"><strong>Adresse:</strong> 〒444-0053 愛知県岡崎市板屋町2 メゾンラディウス203, Japan</p>
-            <p class="mb-2"><strong>Kontakt:</strong> mabraun42@googlemail.com</p>
-            <p class="mb-2"><strong>Verantwortlich:</strong> ブラウン マルコ (Braun Marco)</p>
-            <hr class="my-6">
-            <p class="text-sm text-gray-500 italic">Hinweis: PetVoice ist ein digitaler Dienst zur Erstellung von KI-Videoanimationen.</p>
+        <div id="tokutei" class="legal-content space-y-8">
+            <h2 class="text-2xl font-bold border-b pb-2">特定商取引法に基づく表記 (Commercial Disclosure)</h2>
+            
+            <table class="w-full text-sm border-collapse">
+                <tbody>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold w-1/3">事業者の名称 (Legal Name)</td>
+                        <td class="py-3 text-gray-700">ブラウン マルコ (Marco Braun)</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">所在地 (Address)</td>
+                        <td class="py-3 text-gray-700">〒444-0053 愛知県岡崎市板屋町2 メゾンラディウス203</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">電話番号 (Phone Number)</td>
+                        <td class="py-3 text-gray-700">080-9573-8912</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">メールアドレス (Email)</td>
+                        <td class="py-3 text-gray-700">mabraun42@googlemail.com</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">運営責任者 (Representative)</td>
+                        <td class="py-3 text-gray-700">ブラウン マルコ</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">販売価格 (Price)</td>
+                        <td class="py-3 text-gray-700">2,400円 (税込)</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">追加手数料 (Additional Fees)</td>
+                        <td class="py-3 text-gray-700">なし (None)</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">代金の支払時期 (Payment Period)</td>
+                        <td class="py-3 text-gray-700">クレジットカード決済：直ちに処理されます (Immediately)</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">支払方法 (Payment Methods)</td>
+                        <td class="py-3 text-gray-700">クレジットカード (Credit Cards via Stripe)</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">引渡時期 (Delivery Time)</td>
+                        <td class="py-3 text-gray-700">お支払いおよび写真の送付完了後、24〜48時間以内にデジタルデータとして提供 (Within 24-48h after completion)</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-3 font-bold">返品・交換 (Returns/Refunds)</td>
+                        <td class="py-3 text-gray-700 space-y-2">
+                            <p><strong>＜お客様都合による返品・交換＞</strong><br>
+                            デジタルコンテンツの特性上、お支払い後のキャンセルおよび返品は受け付けておりません。<br>
+                            (No refunds for digital content after payment is processed.)</p>
+                            <p><strong>＜欠陥がある場合の返品・交換＞</strong><br>
+                            生成されたビデオファイルに再生不良等の欠陥がある場合は、LINEにてご連絡ください。速やかに再生成 oder 修正対応をいたします。<br>
+                            (In case of defective files, we will provide a fix or regeneration.)</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div id="privacy" class="legal-content">
             <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
-            <p class="mb-4">We respect your privacy. Your email and pet photos are used solely to process your order. Photos are permanently deleted from our servers after the video has been delivered via LINE.</p>
-            <p>Payments are processed securely via Stripe. We do not store your credit card information.</p>
-        </div>
-
-        <div id="terms" class="legal-content">
-            <h2 class="text-2xl font-bold mb-4">Terms & Refund Policy</h2>
-            <p class="mb-4">By ordering, you agree that the service starts immediately after payment. Since this is a custom digital product, we cannot offer refunds once the video creation has begun.</p>
-            <p>If you are not satisfied with the quality, please contact us via LINE for a free revision.</p>
+            <p>We process your data only for order fulfillment. Photos are deleted after delivery.</p>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white py-12 text-center border-t">
-        <div class="text-xl font-bold text-indigo-600 mb-6 italic">PetVoice</div>
-        <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-500 mb-8">
-            <button onclick="showLegal('impressum')" class="hover:text-indigo-600 transition">Impressum</button>
-            <button onclick="showLegal('privacy')" class="hover:text-indigo-600 transition">Privacy Policy</button>
-            <button onclick="showLegal('terms')" class="hover:text-indigo-600 transition">Terms & Refund</button>
+    <footer class="bg-white py-12 text-center border-t mt-10">
+        <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-400 mb-8 px-4">
+            <button onclick="showLegal('tokutei')" class="hover:text-indigo-600">特定商取引法に基づく表記 (Commercial Disclosure)</button>
+            <button onclick="showLegal('privacy')" class="hover:text-indigo-600">Privacy Policy</button>
         </div>
-        <div class="flex justify-center mb-8">
-            <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-6 py-2 rounded-full font-bold flex items-center shadow-md">
-                <i class="fab fa-line mr-2 text-xl"></i> LINE Support
-            </a>
-        </div>
-        <p class="text-gray-400 text-xs">© 2024 PetVoice. All rights reserved.</p>
+        <p class="text-gray-400 text-xs">© 2024 PetVoice. Marco Braun.</p>
     </footer>
 
     <script>
@@ -186,17 +217,9 @@
             langs.forEach(l => {
                 const elements = document.querySelectorAll('.lang-' + l);
                 elements.forEach(el => el.style.display = (l === lang ? 'block' : 'none'));
-                const btn = document.getElementById('btn-' + l);
-                if (l === lang) {
-                    btn.classList.add('bg-white', 'shadow-sm', 'text-indigo-600');
-                    btn.classList.remove('text-gray-500');
-                } else {
-                    btn.classList.remove('bg-white', 'shadow-sm', 'text-indigo-600');
-                    btn.classList.add('text-gray-500');
-                }
+                document.getElementById('btn-' + l).className = (l === lang ? 'px-3 py-1 rounded bg-white shadow-sm text-indigo-600' : 'px-3 py-1 rounded text-gray-500');
             });
         }
-
         function showLegal(id) {
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('legal-pages').classList.remove('hidden');
@@ -204,31 +227,20 @@
             document.getElementById(id).style.display = 'block';
             window.scrollTo(0, 0);
         }
-
         const form = document.getElementById('petvoice-form');
-        const btn = document.getElementById('submit-btn');
-
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = "...";
-            const formData = new FormData(form);
+            const btn = document.getElementById('submit-btn');
+            btn.disabled = true; btn.innerText = "...";
             try {
                 const response = await fetch("https://formspree.io/f/mnjwqyqd", {
                     method: "POST",
-                    body: formData,
+                    body: new FormData(form),
                     headers: { 'Accept': 'application/json' }
                 });
-                if (response.ok) {
-                    window.location.href = "https://buy.stripe.com/test_6oU5kDg5E5L2ckg4Do4Ja00";
-                } else {
-                    btn.disabled = false;
-                    btn.innerText = "Error";
-                }
-            } catch (err) {
-                btn.disabled = false;
-                btn.innerText = "Error";
-            }
+                if (response.ok) window.location.href = "https://buy.stripe.com/test_6oU5kDg5E5L2ckg4Do4Ja00";
+                else { btn.disabled = false; btn.innerText = "Error"; }
+            } catch (err) { btn.disabled = false; btn.innerText = "Error"; }
         });
     </script>
 </body>
