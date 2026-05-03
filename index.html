@@ -64,10 +64,16 @@
                 <p class="text-xl mb-10 opacity-90 lang-en">Unique video messages from your beloved pet.</p>
                 <p class="text-xl mb-10 opacity-90 lang-de">Einzigartige Video-Botschaften von deinem Liebling.</p>
                 <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a href="#order" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform">
+                    <a href="#order" class="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform flex items-center justify-center">
                         <span class="lang-ja">今すぐ作成する</span>
                         <span class="lang-en">Create Now</span>
                         <span class="lang-de">Jetzt erstellen</span>
+                    </a>
+                    <a href="https://line.me/ti/p/@526pztsp" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition-transform flex items-center justify-center">
+                        <i class="fab fa-line mr-2 text-2xl"></i>
+                        <span class="lang-ja">LINEサポート</span>
+                        <span class="lang-en">LINE Support</span>
+                        <span class="lang-de">LINE Support</span>
                     </a>
                 </div>
             </div>
@@ -123,8 +129,12 @@
                             <input name="email" type="email" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500" required placeholder="your@email.com">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold mb-1 lang-ja">ペットに何を話させたいですか？</label>
-                            <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="例：誕生日おめでとう！ / いつもありがとう"></textarea>
+                            <label class="block text-sm font-bold mb-1">
+                                <span class="lang-ja">ペットに何を話させたり歌わせたりしたいですか？（できるだけ詳しく入力してください）</span>
+                                <span class="lang-en">What should your pet say or sing? (Please be as specific as possible)</span>
+                                <span class="lang-de">Was soll dein Haustier sagen oder singen? (Bitte so genau wie möglich)</span>
+                            </label>
+                            <textarea name="message" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-indigo-500 h-24" required placeholder="例：お誕生日おめでとう！大好きだよ！ / 例：AKB48のヘビーローテーションを歌って！"></textarea>
                         </div>
                         <button type="submit" id="submit-btn" class="w-full bg-black text-white font-bold py-4 rounded-lg hover:bg-gray-800 transition shadow-lg">
                             <span class="lang-ja">お支払いへ進む</span>
@@ -200,7 +210,7 @@
                             </div>
                             <div>
                                 <p class="font-bold underline">＜不備・欠陥がある場合の返品・交換＞</p>
-                                <p>納品されたビデオファイルに再生不良等の不備がある場合は、公式LINE（080-9573-8912）までご連絡ください。速やかに修正または再生成対応をいたします。その際の費用負担はございません。</p>
+                                <p>納品されたビデオファイルに再生不良等の不備がある場合は、公式LINE（080-9573-8912）までご連絡ください。速やかに修正または再生成対応をいたします。その際の費用負担erzeugt.</p>
                             </div>
                         </td>
                     </tr>
